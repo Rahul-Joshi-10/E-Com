@@ -1,0 +1,47 @@
+{% extends 'header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Adding Product{% endblock %}</title>
+</head>
+<body>
+
+    <form action="{{url_for('add_product')}}" method="post" enctype="multipart/form-data">
+    
+    <label for="product_name">Product Name</label><br>
+    <input type="text" name="product_name" required ><br>
+
+    <label for="product_price">Product Price</label><br>
+    <input type="number" name="product_price" required ><br>
+
+    <label for="product_details">Product Details</label><br>
+    <input type="text" name="product_details" required><br>
+
+    <label for="product_image1">Product Image 1</label><br>
+    <input type="file" accept="image/*" name="product_image1" required><br>
+
+    <label for="product_image2">Product Image 2</label><br>
+    <input type="file" accept="image/*" name="product_image2"><br>
+
+    <label for="product_image3">Product Image 3</label><br>
+    <input type="file" accept="image/*" name="product_image3"><br>
+
+    <label for="product_image4">Product Image 4</label><br>
+    <input type="file" accept="image/*" name="product_image4"><br><br>
+
+    <select name="product_category" required>
+        <option value="Electronic">Electronic</option>
+        <option value="WearAbles">WearAbles</option>
+        <option value="other" deafult>ohter</option>
+    </select><option value=""></option>
+
+    <button type="submit">Add Product</button>
+
+</form>
+    
+</body>
+</html>
+{% endblock %}

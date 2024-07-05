@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-COMM WEBSITE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <section id="header">
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/logo.jpg') }}" class='logo'
+                    alt="LOGO"></a>
+            <div>
+                <ul id="navbar">
+                    <li><div class="group">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+                          <g>
+                            <path
+                              d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"
+                            ></path>
+                          </g>
+                        </svg>
+                        <input class="input" type="search" placeholder="Search" />
+                      </div>
+                    </li>
+                    <li><a class="active" href="{{ url_for('index') }}"> HOME </a></li>
+                    <li><a href="{{ url_for('shop') }}"> SHOP </a></li>
+                    <li><a href="{{ url_for('contact') }}"> CONTACT </a></li>
+                    {% if session.get('username') %}
+                    {% if session.get('is_seller') %}
+                    <li><a href="{{ url_for('add_product') }}"> Add Product </a></li>
+                    <li><a href="{{ url_for('my_product') }}"> My Product </a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('show_wishlist') }}"> WISHLIST </a></li>
+                    <li><a href="{{ url_for('show_cart') }}"> <i id="bag" class="fas fa-shopping-bag"></i> </a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('logout') }}"> Logout </a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('login') }}"> Login </a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </section>
+    </header>
+    <div class="container">
+        <!-- Flash Messages -->
+        <div id="flash-messages" class="flash-messages-container"></div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }} <!-- this will display the message -->
+                <button type="button" class="close" onclick="this.parentElement.style.display='none';">&times;</button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+    
+        {% block content %}{% endblock %}
+
+        <footer>
+            <section id="footer">
+                <div>
+                    <h4>footer content</h4>
+                </div>
+            </section>
+        </footer>
+</body>
+
+</html>

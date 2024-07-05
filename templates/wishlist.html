@@ -1,0 +1,71 @@
+{% extends 'header.html' %}
+{% block content %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlist</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='products.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+  <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
+  <script src="{{url_for('static',filename = 'JS/script.js')}}"></script>
+</head>
+<body>
+  <h1>Wishlist</h1>
+  <div id="flash-messages"></div>
+  <div id="product1" class="section-f1"></div>
+
+  <section id="product1" class="section-f2">
+    <h1>FEATURED PRADUCTS</h1>
+    <p>summer collection new modren designs</p>
+    <div id="flash-messages"></div>
+
+    <div class="pro-contianer">
+      {% for product in wish_list %}
+      <div class="pro">
+        <label class="ui-bookmark heart-icon-remove" data-product-id="{{product._id}}">
+          <input type="checkbox" checked/>
+          <div class="bookmark">
+            <svg
+              viewBox="0 0 16 16"
+              style="margin-top:4px"
+              class="bi bi-heart-fill"
+              height="25"
+              width="25"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
+                fill-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+        </label>
+
+        <div class="product_link">
+          <img id="pro1"
+            src="{{url_for('static', filename='img/uploaded_images/' ~product.images[0])}}?v={{ random_string }}"
+            alt="product1.." />
+          <div class="des">
+            <span>{{product.product_name}}</span>
+            <p>{{product.product_category}}</p>
+            <div class="star">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <h4>₹{{product.product_price}}</h4>
+          </div>
+        </div>
+        {% if not session.get('is_seller') and session.get('customer_id') %}
+        <i class="fas fa-shopping-cart cart_button" onclick='AddToCart("{{product._id}}")'></i>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  
+</body>
+{% endblock %}

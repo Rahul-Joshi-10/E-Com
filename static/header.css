@@ -1,0 +1,234 @@
+.logo{
+    width: 100px;
+    height: auto;
+    display: block;
+}
+h1 {
+    font-size: 2em; /* Adjust the size as needed */
+}
+
+
+#bag{
+    width: 30px;
+    height: auto;
+    display: block;
+
+}
+
+body{
+    background-color: #ffffff;
+        /* color: #e0d7c6; */h1 {
+    font-size: 2em; /* Adjust the size as needed */
+}
+}
+
+#header{
+    
+    /* this will add all elements into DIV */
+    display: flex; 
+
+    /* this will make all item at centure of DIV but from top and bottom */
+    align-items: center;      
+
+    /* this will move one element at right and one at left */
+    justify-content: space-between;
+
+    /* padding means adding space for div from [top-bottom] [side-wise] */
+    padding: 20px 80px ;
+
+    /* adding back-ground colour */
+    background-color: #e0d7c6   ;
+
+    box-shadow: 0px 10px 20px rgba(1, 1, 1, 0.1);
+
+}
+header{
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    right: 0;
+}
+#navbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#navbar li{
+    list-style: none;
+    padding: 0px 30px;
+    position: relative;
+
+}
+
+#navbar li a{
+    text-decoration: none;
+    list-style: none;
+    font-size: 20px;
+    font-weight: 600;
+    color:black;
+
+    /* this will add smooth effect on hover */
+    transition: 0.4s ease;
+}
+
+
+/* this is to add hover effect */
+#navbar li a:hover,
+/* this active effect will highlight current selected item */
+#navbar li a.active{
+    color:#0084dc;
+}
+
+/* this is for after effect of active means if we click on other elements then 
+    that element is also going to highlight */
+#navbar li a.active::after{
+    content: "";
+    width: 30%;
+    height: 2px;
+    background-color: #3498db;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+
+}
+
+/* #footer{
+    position: absolute;
+    background-color: #e0d7c6;
+    bottom: 0;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.10);
+    font-display: white;
+    display: flex;
+} */
+
+
+footer{
+    /* this will add all elements into DIV */
+    display: flex; 
+
+
+    /* this will make all item at centure of DIV but from top and bottom */
+    align-items: center;    
+
+    /* this will move one element at right and one at left */
+    justify-content: space-between;
+
+    /* padding means adding space for div from [top-bottom] [side-wise] */
+    padding: 20px 80px ;
+
+    /* adding back-ground colour */
+    background-color: #e0d7c6   ;
+
+    box-shadow: 0px 10px 20px rgba(1, 1, 1, 0.1);
+
+
+
+}
+
+
+
+/* static/css/style.css */
+.flash-messages-container{
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    max-width: 600px;
+    z-index: 1000;
+}
+
+.flash-messages-container .alert {
+    padding: 15px;
+    margin-bottom: 10px; /* Reduce the margin to avoid large gaps between messages */
+    border: 1px solid transparent;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    opacity: 0.9; /* Slightly transparent */
+    transition: opacity 0.3s ease;
+}
+
+.alert-success{
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-error{
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.alert-warning{
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.alert-info{
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+/*close button */
+.flash-messages-container .alert .close {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    color: inherit;
+}
+
+
+/* search Bar */
+
+.group {
+    display: flex;
+    line-height: 28px;
+    align-items: center;
+    position: relative;
+    max-width: 190px;
+  }
+  
+  .input {
+    width: 300px;
+    height: 40px;
+    line-height: 28px;
+    padding: 0 1rem;
+    padding-left: 2.5rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #f3f3f4;
+    color: #0d0c22;
+    transition: 0.3s ease;
+  }
+  
+  .input::placeholder {
+    color: #9e9ea7;
+  }
+  
+  .input:focus,
+  input:hover {
+    outline: none;
+    border-color: rgba(126, 97, 0, 0.4);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgb(0 48 73 / 10%);
+  }
+  
+  .icon {
+    position: absolute;
+    left: 1rem;
+    fill: #9e9ea7;
+    width: 1rem;
+    height: 1rem;
+  }
+  

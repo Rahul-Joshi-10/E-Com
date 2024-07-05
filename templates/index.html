@@ -1,0 +1,76 @@
+{% extends 'header.html' %} {% block title %} Home - My App{% endblock %} {%
+block content %}
+
+<head>
+  <title>E-COMM WEBSITE</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='products.css')}}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+
+<body>
+  <section id="hero">
+    <h4>Lorem, ipsum dolor.</h4>
+    <h2>Lorem, ipsdfg sdolor.</h2>
+    <h1>Lorem, ipsum dolfgh</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    <button>shop now</button>
+  </section>
+
+
+  <div id="flash-messages"></div>
+
+  <section id="product1" class="section-f2">
+    <h1>FEATURED PRADUCTS</h1>
+    <p>summer collection new modren designs</p>
+    <div id="flash-messages"></div>
+
+    <div class="pro-contianer">
+      {% for product in products %}
+      <div class="pro" data-product-id="{{product._id}}">
+        {% if not session.get('is_seller') %}
+        <label class="ui-bookmark heart-icon-remove" data-product-id="{{product._id}}">
+          <input type="checkbox" {% if product._id in customer_wishlist %} checked {% endif %} />
+          <div class="bookmark">
+            <svg viewBox="0 0 16 16" style="margin-top:4px" class="bi bi-heart-fill" height="25" width="25"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" fill-rule="evenodd">
+              </path>
+            </svg>
+          </div>
+        </label>
+        {% endif %}
+        <div class="product_link">
+          <img id="pro1"
+            src="{{url_for('static', filename='img/uploaded_images/' ~product.images[0])}}?v={{ random_string }}"
+            alt="product1.." />
+          <div class="des">
+            <span>{{product.product_name}}</span>
+            <p>{{product.product_category}}</p>
+            <h4>₹{{product.product_price}}</h4>
+          </div>
+        </div>
+        {% if not session.get('is_seller') and session.get('customer_id') %}
+        <!-- <i class="fas fa-shopping-cart cart_button" onclick=></i>-->
+        <button class="CartBtn" onclick='event.stopPropagation(); AddToCart("{{product._id}}")'>
+          <span class="IconContainer">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)"
+              class="cart">
+              <path
+                d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+              </path>
+            </svg>
+          </span>
+          <p class="text">Add to Cart</p>
+        </button>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <script src="{{url_for('static',filename = 'JS/script.js')}}"></script>
+</body>
+
+{% endblock %}

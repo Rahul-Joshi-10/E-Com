@@ -1,0 +1,72 @@
+{% extends 'header.html' %}
+
+{% block title %} Product Details {% endblock %}
+
+{% block content %}
+<head>
+    <title>Product Over View page</title>
+    <script src="{{ url_for('static', filename='JS/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/zoom.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/product_details.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='product_deatils.css') }}">
+</head>
+<body>
+    {% if product %}
+    <div class="product_container">
+        <!-- zoom wala container -->
+        <div class="xzoom-container">
+            {% if product.images[0] %} <img src="{{url_for('static', filename='img/uploaded_images/' ~product.images[0])}}" 
+            class="xzoom" xoriginal="{{url_for('static', filename='img/uploaded_images/' ~product.images[0])}}">{% endif %}
+
+            <div class="xzoom-thumbs">
+                {% if product.images[0] %}<a href="{{url_for('static', filename='img/uploaded_images/' ~product.images[0])}}">
+                    <img class="xzoom-gallery" src="{{url_for('static', filename='img/uploaded_images/' ~product.images[0])}}">
+                </a>{% endif %}
+
+                {% if product.images[1] %}<a href="{{url_for('static', filename='img/uploaded_images/' ~product.images[1])}}">
+                    <img class="xzoom-gallery" src="{{url_for('static', filename='img/uploaded_images/' ~product.images[1])}}">
+                </a>{% endif %}
+
+                {% if product.images[2] %}<a href="{{url_for('static', filename='img/uploaded_images/' ~product.images[2])}}">
+                    <img class="xzoom-gallery" src="{{url_for('static', filename='img/uploaded_images/' ~product.images[2])}}">
+                </a>{% endif %}
+
+                {% if product.images[3] %}<a href="{{url_for('static', filename='img/uploaded_images/' ~product.images[3])}}">
+                    <img class="xzoom-gallery" src="{{url_for('static', filename='img/uploaded_images/' ~product.images[3])}}">
+                </a>{% endif %}
+
+                {% if product.images[4] %}<a href="{{url_for('static', filename='img/uploaded_images/' ~product.images[4])}}">
+                    <img class="xzoom-gallery" src="{{url_for('static', filename='img/uploaded_images/' ~product.images[4])}}">
+                </a>{% endif %}
+            </div>
+        </div>
+        <div class="description">
+            <h1>{{product.product_name}}</h1>
+            <p>{{product.product_description}}</p>
+            <span>PRICE ₹{{product.product_price}}</span>
+            <div class="buttons">
+                <div class="rating">
+                    <input value="5" name="rate" id="star5" type="radio">
+                    <label title="text" for="star5"></label>
+                    <input value="4" name="rate" id="star4" type="radio">
+                    <label title="text" for="star4"></label>
+                    <input value="3" name="rate" id="star3" type="radio" checked="">
+                    <label title="text" for="star3"></label>
+                    <input value="2" name="rate" id="star2" type="radio">
+                    <label title="text" for="star2"></label>
+                    <input value="1" name="rate" id="star1" type="radio">
+                    <label title="text" for="star1"></label>
+                </div>            
+                <button>BUY</button>
+                <button>Add TO Cart</button>
+            </div>
+        </div>
+        {% endif %}
+
+    
+
+    </div>
+</body>
+
+
+{% endblock %}

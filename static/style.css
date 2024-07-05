@@ -1,0 +1,83 @@
+h1 {
+    font-size: 2em; /* Adjust the size as needed */
+}
+
+
+#hero{
+    /* display: flex; */
+    background-image: url("../static/img/colourful-shopping-bags-table.jpg");
+    height: 100vh;
+    width: auto;
+    background-position: top 5% right 0;
+    background-size: cover;
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: rgb(0, 97, 65);
+    font-weight: 600px;
+    
+}
+
+
+#hero button{
+    /* background-image: url("../static/img/shoping_bg.jpg"); */
+    background-color: rgb(0, 237, 0);
+    border: 0;
+    color: rgb(0, 33, 22);
+    padding: 20px 80px 20px 65px;
+    font-weight: 600;
+    
+    border-radius: 10px 10px;
+    
+}
+
+#feature{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: auto;
+    margin-bottom: 3%;
+    
+}
+
+#f1{
+    margin-top: 10px;
+    height: 120px;
+    width: auto;
+}
+
+.fe-box{
+    /* background-image: url("../static/img/"); */
+    background-color: #e0d7c6;
+    height: 180px;
+    width: 180px;
+    align-items: center;
+    text-align: center;
+    box-shadow: 20px 20px 34px #a3957c;
+    border: 1px solid rgb(84, 53, 0);
+    border-radius: 4px;
+    margin: 15px 0;
+    font-size: 18px;
+}
+
+.fe-box:hover{
+    /* box-shadow: 10px 10px 54px #604d2e; */
+    box-shadow: 10px 10px 54px #604d2e;
+    transform: scale(1.1);
+    transition:  transform 0.4s ease;   
+}
+
+.fe-box h6{
+    padding: 9px 8px 6px 8px;
+    line-height: 1;
+    border-radius: 4px;
+    color: black;
+    background-color: #d8be90;
+    align-items: center;
+    margin-top: 18px;
+}
+
+
+
